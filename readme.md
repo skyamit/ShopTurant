@@ -25,3 +25,16 @@ Designing ShopTurant :
 	id, orderId, productId
 11. transaction
 	id, userId, orderId, status, createdAt
+
+Actions :
+0. every one can view home
+1. user can register
+2. user can login
+3. user can reset password
+4. user can search for a item
+5. user can add address
+6. user can add item to cart
+7. user can order items
+8. user can view previous orders
+9. user can rate ordered items
+10. user can change their address
