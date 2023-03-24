@@ -1,6 +1,6 @@
 package com.shopturant.ShopTurant.product.entity;
 
-import com.shopturant.ShopTurant.aauser.entity.User;
+import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 

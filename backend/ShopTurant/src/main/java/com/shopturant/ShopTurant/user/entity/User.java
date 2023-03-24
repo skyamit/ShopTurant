@@ -1,4 +1,4 @@
-package com.shopturant.ShopTurant.aauser.entity;
+package com.shopturant.ShopTurant.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
