@@ -17,4 +17,6 @@ public class Category {
     Long id;
     @Column
     String title;
+    @Column
+    Boolean isActive = true;
 }
