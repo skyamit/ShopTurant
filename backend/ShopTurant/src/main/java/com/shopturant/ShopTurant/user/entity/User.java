@@ -25,13 +25,13 @@ public class User {
     @Column
     String passwordHash;
     @Column
-    Boolean isSeller;
+    Boolean isSeller = false;
     @Column
     Date registeredAt;
     @Column
     Date lastLogin;
     @Column
-    Boolean isActive;
+    Boolean isActive = false;
 
 
 }
