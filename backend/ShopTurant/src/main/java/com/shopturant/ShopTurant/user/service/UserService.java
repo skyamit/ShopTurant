@@ -32,7 +32,7 @@ public class UserService {
         newUser.setIsSeller(userDetails.getIsSeller());
         newUser.setMobileNo(userDetails.getPhoneNo());
         newUser.setRegisteredAt(new Date());
-
+        newUser.setIsActive(userDetails.getIsActive());
         userDao.save(newUser);
         return true;
     }
