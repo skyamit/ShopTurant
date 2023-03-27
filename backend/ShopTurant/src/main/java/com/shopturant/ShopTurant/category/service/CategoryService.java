@@ -24,6 +24,13 @@ public class CategoryService {
         return category;
     }
 
+    public Category getCategoryByTitle(String title) {
+        Category category = categoryDao.getCategoryByTitle(title);
+        if(category == null) {
+            category = addCategory(title);
+        }
+        return category;
+    }
     public List<Category> getAllActiveCategory() {
         return categoryDao.getAllActiveCategory();
     }
