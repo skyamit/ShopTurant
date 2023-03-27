@@ -21,7 +21,7 @@ public class ProductCategory {
 
     @OneToOne
     @JoinColumn(name = "product", referencedColumnName = "id")
-    Product productId;
+    Product product;
 
     @OneToOne
     @JoinColumn(name = "category", referencedColumnName = "id")

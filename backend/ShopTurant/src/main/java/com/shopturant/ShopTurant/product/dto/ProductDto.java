@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +22,7 @@ public class ProductDto {
     Date createdAt;
     String imageId; //productId/product/image
     Integer discount;
+    List<String> category;
 
     public boolean isValid() {
         /* { "userId":6, "title":"Ignited Minds", "summary":"Unleashing the power within INDIA by APJ Abdul Kalam.",

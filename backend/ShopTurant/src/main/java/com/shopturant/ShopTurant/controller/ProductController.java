@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -35,6 +36,14 @@ public class ProductController {
         List<ProductDto> products = productService.getAllActiveProducts();
         if(products == null || products.size()==0)
             return new Response<>("Error Occurred..", HttpStatusCode.valueOf(200));
+
+        return new Response<>(products, HttpStatusCode.valueOf(200));
+    }
+    @PostMapping("/product/search")
+    public Response<?> getProducts(@RequestParam String search, @RequestParam Integer offset) {
+        List<ProductDto> products = productService.getAllProductsBySearch(search, offset);
+        if(products == null || products.size()==0)
+            return new Response<>("No Record Exists", HttpStatusCode.valueOf(200));
 
         return new Response<>(products, HttpStatusCode.valueOf(200));
     }
