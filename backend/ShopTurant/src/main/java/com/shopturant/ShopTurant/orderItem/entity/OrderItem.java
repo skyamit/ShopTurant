@@ -21,4 +21,6 @@ public class OrderItem {
     @OneToMany
     @JoinColumn(name = "product", referencedColumnName = "id")
     Product productId;
+    @Column
+    Long count;
 }
