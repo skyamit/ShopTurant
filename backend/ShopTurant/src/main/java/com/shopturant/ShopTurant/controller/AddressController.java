@@ -34,7 +34,7 @@ public class AddressController {
         return new Response<>("Address added successfully!", HttpStatusCode.valueOf(201));
     }
     @PostMapping("/address/update")
-    public Response<?> udpateAddress(@RequestBody AddressDto addressDto) {
+    public Response<?> updateAddress(@RequestBody AddressDto addressDto) {
         if(!addressDto.isValid() || addressDto.getId() == null)
             return new Response<>("Invalid data!", HttpStatusCode.valueOf(200));
         Address address = addressService.getAddressById(addressDto.getId());
