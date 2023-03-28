@@ -24,5 +24,7 @@ public class Cart {
     @JoinColumn(name = "product", referencedColumnName = "id")
     Product productId;
     @Column
+    Integer count;
+    @Column
     Boolean isActive;
 }

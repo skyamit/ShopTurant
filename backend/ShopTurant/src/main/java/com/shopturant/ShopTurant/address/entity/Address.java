@@ -1,5 +1,6 @@
 package com.shopturant.ShopTurant.address.entity;
 
+import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,9 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @OneToOne
+    @JoinColumn(name = "user", referencedColumnName = "id")
+    User user;
     @Column
     String name;
     @Column

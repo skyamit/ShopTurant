@@ -70,4 +70,8 @@ public class UserService {
         userDao.resetPasswordById(userDetails.getId(), hashedNewPassword);
         return true;
     }
+
+    public User getUserById(Long id) {
+        return userDao.getUserById(id);
+    }
 }
