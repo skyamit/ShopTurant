@@ -26,14 +26,20 @@ Designing ShopTurant :
 11. transaction
 	id, userId, orderId, status, createdAt
 
+select p from 
+product p
+left join productCategory pc on p.id = pc.product_id
+left join category c on  pc.category_id = c.id
+where p.title like '%:search%' or c.title like '%:search%'
+
 Actions :
 1. user can register
 2. user can login
 3. user can reset password
 4.0 seller can add product 
-4. user can search for a item
-5. user can add address
-6. user can add item to cart
+4. user can search for a products or category - all category items, product.name
+5. user can add address // remove address // getAllAddress
+6. user can add item to cart // user can remove item from cart
 7. user can order items
 8. user can view previous orders
 9. user can rate ordered items
