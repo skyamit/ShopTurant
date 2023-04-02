@@ -24,13 +24,14 @@ public class UserDetails {
 
     @JsonIgnore
     public boolean isValid() {
+        System.out.println(this);
         if(name == null || name.length()==0)
             return false;
         if(email == null || email.length()==0)
             return false;
         if(password == null || password.length()==0)
             return false;
-        if(phoneNo == null || (phoneNo < 999999999L || phoneNo > 9999999999L ))
+        if(phoneNo == null )
             return false;
         return true;
     }

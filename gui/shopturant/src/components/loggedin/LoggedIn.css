@@ -1,0 +1,19 @@
+.popup {
+    background-color: greenyellow;
+    font-family: monospace;
+}
+#userPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 100;
+    width:min(60%, 450px);
+    padding:20px;
+}
+.iconCloseUser {
+    height:20px;
+    width:20px;
+    float:right;
+}

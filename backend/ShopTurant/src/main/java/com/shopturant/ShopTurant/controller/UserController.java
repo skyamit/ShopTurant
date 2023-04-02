@@ -1,14 +1,12 @@
 package com.shopturant.ShopTurant.controller;
 
+import com.shopturant.ShopTurant.user.entity.User;
 import com.shopturant.ShopTurant.user.service.UserService;
 import common.Response;
 import common.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -39,6 +37,19 @@ public class UserController {
             return new Response<>("Details are not valid !!", HttpStatusCode.valueOf(200));
 
         return new Response<>(userDetails, HttpStatusCode.valueOf(200));
+    }
+    @PostMapping("/userDetails")
+    public Response<?> userDetails(@RequestBody UserDetails userDetails) {
+        System.out.println(userDetails.toString());
+        if(userDetails.getId() == null)
+            return new Response<>("Details are not valid !!", HttpStatusCode.valueOf(200));
+
+        User user = userService.getUserById(userDetails.getId());
+
+        if(user == null)
+            return new Response<>("Details are not valid !!", HttpStatusCode.valueOf(200));
+
+        return new Response<>(user, HttpStatusCode.valueOf(200));
     }
 
     @PostMapping("/reset")
