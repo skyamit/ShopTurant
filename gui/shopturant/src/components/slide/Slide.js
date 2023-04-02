@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Slide.css';
+import left from '../../images/left.png';
+import right from '../../images/right.png';
 
 function Slide() {
     const [path,setPath] = useState('/slide1.jpg');
@@ -21,12 +23,13 @@ function Slide() {
         setCount((pre) => pre - 1);
         console.log('prev',path, count); 
 	};
-    return (
-        <>
-        <img src={path} className='slide' alt='slide' />
-        <button id='next' onClick={next}>Next</button>
-        <button id='prev' onClick={prev}>Prev</button>
-        </>
+    return ( 
+        <div className='slideDiv'>
+            <img src={path} className='slide' alt='slide' />
+            <img src={right} id='prev' onClick={next} alt='slide'/>
+            <img src={left} id='next' onClick={prev} alt='slide'/>
+            <div className='blurDiv' ></div>
+        </div>
     );
 }
   

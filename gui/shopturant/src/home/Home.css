@@ -1,0 +1,57 @@
+.outerDiv {
+    padding:20px;
+}
+.home {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding:10px;
+    background-color: #f2f2f2;
+}
+.product {
+    min-width: 350px;
+    flex-grow: 1;
+}
+.content {
+    background-color: #e0e0e0;
+    padding:10px;
+    margin:10px;
+    outline: solid;
+    outline-width: 1px;
+    outline-color: #e1e1e1;
+}
+.headingDiv {
+    padding:10px;
+    margin-top:10px;
+    max-width: 370px;
+}
+h3,h5 {
+    margin: 0px;
+}
+.inline-block {
+    display:inline;
+}
+.p-2 {
+    padding:5px;
+}
+a{
+    text-decoration: none;
+}
+.productImageDiv {
+    display: flex;
+    flex-direction: row;
+    padding:10px;
+}
+.first-line, .second-line {
+    flex-grow: 1;
+}
+.productImage { 
+    padding:5px;
+    outline:1px;
+    outline-color: #c2c2c2;
+}
+.productSingleImage {
+    height: 80px;
+    width: 100%;
+    object-fit: cover;
+}
