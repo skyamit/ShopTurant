@@ -4,8 +4,14 @@ import logo from '../../images/ShopTurant.png';
 import cart from '../../images/carts.png';
 import NotLoggedIn from '../notloggedin/NotLoggedIn';
 import LoggedIn from '../loggedin/LoggedIn';
+import { useEffect, useState } from 'react';
 
 function Header() {
+    const [userId, setUserId] = useState(null);
+    useEffect(()=>{
+        console.log(sessionStorage.getItem('userid'));
+        setUserId(sessionStorage.getItem("userId"));
+    },[userId]);
     return (
     <Grid className='header' container spacing={1}>
         <Grid className='icon'  item xs={3}>
@@ -16,7 +22,8 @@ function Header() {
             <button className='searchButton' type='submit'>Search</button>
         </Grid>
         <Grid className='detail' item xs={3}>
-            <LoggedIn/>
+            { userId && (<LoggedIn/>) }
+            { !userId && (<NotLoggedIn/>) }
             <img src={cart} className="cart  pl-2" alt="cart" />
         </Grid>
     </Grid>

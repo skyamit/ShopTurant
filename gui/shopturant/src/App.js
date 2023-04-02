@@ -7,13 +7,15 @@ import Header from './components/header/Header';
 import Slide from './components/slide/Slide';
 import Home from './home/Home';
 import Footer from './components/footer/Footer';
-
+import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 function App() {
   return (
     <>
     <Header/>
     <Slide/>
-    <Home/>
+      <Routes>    
+        <Route path="/" element={<Home />} exact />
+      </Routes>
     <Footer/>
     </>
   );
