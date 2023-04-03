@@ -66,9 +66,9 @@ return (
                 Hello,
             </div>
             <div className='links'>
-                <a href="#" className='linkText' onClick={login}>Login</a>
+                <a href="#" className='linkText pointer' onClick={login}>Login</a>
                 <h6 className='linkText'>Or</h6>
-                <a href="#" className='linkText' onClick={signup}>Signup</a>
+                <a href="#" className='linkText pointer' onClick={signup}>Signup</a>
             </div>
             <div id='loginPopup' className="popup">
                 <img className='iconClose' src="/cancel.png"  alt="close" onClick={close}/>
@@ -76,7 +76,7 @@ return (
                 <form method="POST" onSubmit={submitLogin}>
                     Email Id : <input id="email" type="email" className="inputs" onChange={(event)=>{setEmail(event.target.value)}}  placeholder="Enter you Email Id" /> <br/>
                     Password : <input id="password" type="password" className="inputs" onChange={(event)=>{setPassword(event.target.value)}} placeholder="Password" /> <br/>
-                    <button id="loginBtn" type="submit" onClick={submitLogin} className="inputs btn">Login</button>
+                    <button id="loginBtn" type="submit" onClick={submitLogin} className="inputs btn pointer">Login</button>
                 </form>
             </div>
             <div id='signupPopup' className="popup">
@@ -96,7 +96,7 @@ return (
                         <option value={false}>No</option>
                         <option value={true}>Yes</option>
                     </select> <br/>
-                    <button type="submit" id="signupBtn"  className="inputs btn" >SignUp</button>
+                    <button type="submit" id="signupBtn"  className="inputs btn pointer" >SignUp</button>
                 </form>
             </div>
         </div>

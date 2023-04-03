@@ -17,3 +17,15 @@
     width:20px;
     float:right;
 }
+.userPopupTitle {
+    color:black;
+}
+.userPopupLink,.userPopupTitle {
+    padding:5px;
+    font-family: monospace;
+    margin:0px;
+}
+.userPopupLink{
+    color:blue;
+}
+

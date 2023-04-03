@@ -36,11 +36,21 @@ function LoggedIn() {
             <img src={avatar} className="profileImage  pl-2" alt="cart" />
             <div className='userDetails' >
                 <h6 className='helloUser'>Hello, {data && data.data.name}</h6>
-                <h6 className='userOption' onClick={showUserPopup}>Accounts & Details</h6>
+                <h6 className='userOption pointer' onClick={showUserPopup}>Accounts & Details</h6>
             </div>
             <div id='userPopup' className="popup">
-                <img className='iconCloseUser' src="/cancel.png" alt="close" onClick={close}/>
-                <button onClick={logout}>Logout</button> 
+                <img className='iconCloseUser pointer' src="/cancel.png" alt="close" onClick={close}/>
+                <p className='userPopupTitle'>Your History</p>
+                <h3 className="userPopupLink pointer" >Your Orders</h3>
+                <h3 className="userPopupLink pointer" >Your Wish List</h3>
+                <hr/>
+                <p className='userPopupTitle'>Seller :</p>
+                <h3 className="userPopupLink pointer" >Add Products</h3>
+                <h3 className="userPopupLink pointer" >View Products</h3>
+                <hr/>
+                <p className='userPopupTitle'>Account Details</p>
+                <h3 className="userPopupLink pointer" >Your Account</h3>
+                <h3 className="userPopupLink pointer" onClick={logout} >Sign Out</h3>
             </div>
         </div>
     );
