@@ -26,11 +26,6 @@ Designing ShopTurant :
 11. transaction
 	id, userId, orderId, status, createdAt
 
-select p from 
-product p
-left join productCategory pc on p.id = pc.product_id
-left join category c on  pc.category_id = c.id
-where p.title like '%:search%' or c.title like '%:search%'
 
 Actions :
 1. user can register
