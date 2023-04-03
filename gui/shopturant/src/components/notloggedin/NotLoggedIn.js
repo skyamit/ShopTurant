@@ -71,7 +71,7 @@ return (
                 <a href="#" className='linkText pointer' onClick={signup}>Signup</a>
             </div>
             <div id='loginPopup' className="popup">
-                <img className='iconClose' src="/cancel.png"  alt="close" onClick={close}/>
+                <img className='iconClose pointer' src="/cancel.png"  alt="close" onClick={close}/>
                 <h1>Login to Account</h1>
                 <form method="POST" onSubmit={submitLogin}>
                     Email Id : <input id="email" type="email" className="inputs" onChange={(event)=>{setEmail(event.target.value)}}  placeholder="Enter you Email Id" /> <br/>
@@ -80,7 +80,7 @@ return (
                 </form>
             </div>
             <div id='signupPopup' className="popup">
-                <img className='iconClose' src="/cancel.png" alt="close" onClick={close}/>
+                <img className='iconClose pointer' src="/cancel.png" alt="close" onClick={close}/>
                 <h1>Create your Account</h1>
                 <form method="post" onSubmit={submitSignup}>
                     Name : 
