@@ -8,8 +8,10 @@ import { useEffect, useState } from 'react';
 
 function Header() {
     const [userId, setUserId] = useState(null);
+    const checkLogin = ()=> {
+        setUserId(sessionStorage.getItem("userId"));
+    }
     useEffect(()=>{
-        console.log(sessionStorage.getItem('userid'));
         setUserId(sessionStorage.getItem("userId"));
     },[userId]);
     return (
@@ -22,8 +24,8 @@ function Header() {
             <button className='searchButton' type='submit'>Search</button>
         </Grid>
         <Grid className='detail' item xs={3}>
-            { userId && (<LoggedIn/>) }
-            { !userId && (<NotLoggedIn/>) }
+            { userId && (<LoggedIn checkLogin={checkLogin} />) }
+            { !userId && (<NotLoggedIn checkLogin={checkLogin}/>) }
             <img src={cart} className="cart  pl-2" alt="cart" />
         </Grid>
     </Grid>

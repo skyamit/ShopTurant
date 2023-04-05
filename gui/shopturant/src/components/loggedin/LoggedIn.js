@@ -3,7 +3,7 @@ import avatar from '../../images/avatar.png';
 import { useEffect, useState } from 'react';
 import Config from '../../config/Config';
 import './LoggedIn.css';
-function LoggedIn() {
+function LoggedIn(props) {
     const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
     const [data, setData] = useState();
     const url = Config.url;
@@ -20,8 +20,8 @@ function LoggedIn() {
         .then(async response => await response.json())
         .then(json => setData(json))
         .catch(error => console.log(error));
-        console.log(data);
-    },[]);
+        props.checkLogin()
+    },[userId]);
     const close = ()=>{
         document.getElementById('userPopup').style.display = 'none';
     };
@@ -29,13 +29,15 @@ function LoggedIn() {
         document.getElementById('userPopup').style.display = 'block';
     };
     const logout = ()=> {
+        close();
         sessionStorage.removeItem("userId");
+        setUserId(null);
     }
     return (
         <div className='myProfile pl-2' >
             <img src={avatar} className="profileImage  pl-2" alt="cart" />
             <div className='userDetails' >
-                <h6 className='helloUser'>Hello, {data && data.data.name}</h6>
+                <h6 className='helloUser'>Hello, {data && data?.data?.name}</h6>
                 <h6 className='userOption pointer' onClick={showUserPopup}>Accounts & Details</h6>
             </div>
             <div id='userPopup' className="popup">

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './NotLoggedIn.css';
 import Config from "../../config/Config";
 
-function NotLoggedIn() {
+function NotLoggedIn(props) {
     const url = Config.url;
     const [data, setData] = useState();
     const [name, setName] = useState("");
@@ -11,6 +11,9 @@ function NotLoggedIn() {
     const [password, setPassword] = useState("");
     const [seller, setSeller] = useState(false);
 
+    useEffect(()=>{
+        props.checkLogin()
+    },[data]);
     var login = ()=> {
         document.getElementById('loginPopup').style.display = 'block';
         document.getElementById('signupPopup').style.display = 'none';
@@ -38,7 +41,7 @@ function NotLoggedIn() {
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(variable)
         })
-        .then(async response => await response.json())
+        .then(response => response.json())
         .then(json => setData(json))
         .catch(error => console.log(error));
     };
@@ -48,16 +51,19 @@ function NotLoggedIn() {
             "password":password,
             "email":email
         };
-        await fetch(url+'/login',{
+        fetch(url+'/login',{
             method:"POST",
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(variable)
         })
-        .then(async response => await response.json())
-        .then(json => setData(json))
+        .then(response => response.json())
+        .then(async json => {
+            console.log(json);
+            setData(json);
+            sessionStorage.setItem("userId", json?.data?.id);
+        })
         .catch(error => console.log(error));
-        console.log(data.data.id);
-        sessionStorage.setItem("userId", data.data.id);
+        close();
     };
     
 return (
