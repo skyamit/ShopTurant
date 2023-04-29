@@ -1,9 +1,11 @@
 package com.shopturant.ShopTurant.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -13,12 +15,13 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     User userId;
     @Column
     String title;

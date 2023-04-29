@@ -3,10 +3,14 @@ import avatar from '../../images/avatar.png';
 import { useEffect, useState } from 'react';
 import Config from '../../config/Config';
 import './LoggedIn.css';
+import { useNavigate } from 'react-router-dom';
+import Toast from '../toast/Toast';
+
 function LoggedIn(props) {
     const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
     const [data, setData] = useState();
     const url = Config.url;
+    const navigate = useNavigate();
     useEffect(()=>{
         setUserId(sessionStorage.getItem("userId"));
         const variable = {
@@ -18,9 +22,16 @@ function LoggedIn(props) {
             body:JSON.stringify(variable)
         })
         .then(async response => await response.json())
-        .then(json => setData(json))
-        .catch(error => console.log(error));
-        props.checkLogin()
+        .then(json => {
+            if(json.data.name)
+                setData(json);
+            props.checkLogin();
+            console.log(json);
+        })
+        .catch(error => {
+            logout();
+            console.log(error, 1)
+        });
     },[userId]);
     const close = ()=>{
         document.getElementById('userPopup').style.display = 'none';
@@ -32,7 +43,15 @@ function LoggedIn(props) {
         close();
         sessionStorage.removeItem("userId");
         setUserId(null);
-    }
+    };
+    const addProduct = ()=>{
+       navigate('/addProduct');
+       close();
+   };
+   const getProducts = ()=>{
+    navigate('/getProducts');
+    close();
+};
     return (
         <div className='myProfile pl-2' >
             <img src={avatar} className="profileImage  pl-2" alt="cart" />
@@ -46,10 +65,17 @@ function LoggedIn(props) {
                 <h3 className="userPopupLink pointer" >Your Orders</h3>
                 <h3 className="userPopupLink pointer" >Your Wish List</h3>
                 <hr/>
-                <p className='userPopupTitle'>Seller :</p>
-                <h3 className="userPopupLink pointer" >Add Products</h3>
-                <h3 className="userPopupLink pointer" >View Products</h3>
-                <hr/>
+                {
+                    data?.data?.isSeller && (
+                    <>
+                        <p className='userPopupTitle'>Seller :</p>
+                        <h3 className="userPopupLink pointer" onClick={addProduct}>Add Products</h3>
+                        <h3 className="userPopupLink pointer" onClick={getProducts}>View Products</h3>
+                        <hr/>
+                    </>
+                    )
+                }
+                
                 <p className='userPopupTitle'>Account Details</p>
                 <h3 className="userPopupLink pointer" >Your Account</h3>
                 <h3 className="userPopupLink pointer" onClick={logout} >Sign Out</h3>

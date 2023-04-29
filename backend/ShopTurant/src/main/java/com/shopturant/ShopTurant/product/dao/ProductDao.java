@@ -15,4 +15,6 @@ public interface ProductDao extends JpaRepository<Product, Long> {
     nativeQuery = true)
     public List<Product> getAllProductsBySearch(String search, Integer offset);
 
+    @Query(value = "select * from product where user = :userId", nativeQuery = true)
+    public List<Product> getAllProductByUserId(Long userId);
 }

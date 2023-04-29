@@ -1,0 +1,47 @@
+.singleProduct {
+    border:solid;
+    border-width: 1px;
+    border-color: #a1a1a1;
+    width: 300px;
+    margin:10px;
+}
+
+.singleProductImageDiv {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+}
+
+.singleProductImage {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.SingleProductTitleDiv {
+    margin-top:10px;
+}
+
+.SingleProductTitle {
+    color: rgb(15, 15, 15);
+    margin:10px 20px;
+    font-size: 1.2rem;
+    font-family: monospace;
+    font-weight: bolder;
+}
+.SingleProductPriceDiv {
+    margin:10px 0px;
+}
+
+.SingleProductPrice {
+    color: rgb(15, 15, 15);
+    margin: 0px;
+    font-size: 1.2rem;
+    font-family: monospace;
+    padding: 0px 0px 0px 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+.SingleOProductPrice {
+    display: inline-block;
+    -webkit-text-stroke: #a1a1a1;
+}

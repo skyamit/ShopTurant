@@ -58,7 +58,6 @@ function NotLoggedIn(props) {
         })
         .then(response => response.json())
         .then(async json => {
-            console.log(json);
             setData(json);
             sessionStorage.setItem("userId", json?.data?.id);
         })
@@ -79,7 +78,7 @@ return (
             <div id='loginPopup' className="popup">
                 <img className='iconClose pointer' src="/cancel.png"  alt="close" onClick={close}/>
                 <h1>Login to Account</h1>
-                <form method="POST" onSubmit={submitLogin}>
+                <form method="POST" >
                     Email Id : <input id="email" type="email" className="inputs" onChange={(event)=>{setEmail(event.target.value)}}  placeholder="Enter you Email Id" /> <br/>
                     Password : <input id="password" type="password" className="inputs" onChange={(event)=>{setPassword(event.target.value)}} placeholder="Password" /> <br/>
                     <button id="loginBtn" type="submit" onClick={submitLogin} className="inputs btn pointer">Login</button>

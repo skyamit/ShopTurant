@@ -38,12 +38,15 @@ public class ProductService {
         product.setTitle(productDto.getTitle());
         product.setSummary(productDto.getSummary());
         product.setType(productDto.getType());
+        product.setImageId(productDto.getImageId());
         product.setUserId(user);
         product.setDiscount(productDto.getDiscount());
         product = productDao.save(product);
-        for(String category : productDto.getCategory()){
-            Category category1 = categoryService.getCategoryByTitle(category);
-            productCategoryService.addProductCategory(new ProductCategoryDto(product.getId(),category1.getId()));
+        if(productDto.getCategory() != null) {
+            for (String category : productDto.getCategory()) {
+                Category category1 = categoryService.getCategoryByTitle(category);
+                productCategoryService.addProductCategory(new ProductCategoryDto(product.getId(), category1.getId()));
+            }
         }
         return true;
     }
@@ -92,6 +95,13 @@ public class ProductService {
             products.add(dto);
         }
         return products;
+    }
+
+    public List<Product> getProductsByUserId(Long id) {
+        if(id == null)
+            return new ArrayList<>();
+
+        return productDao.getAllProductByUserId(id);
     }
 }
 

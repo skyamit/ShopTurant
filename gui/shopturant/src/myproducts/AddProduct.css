@@ -1,0 +1,41 @@
+.addproductOuter {
+    text-align: center;
+}
+
+.addProductDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color:  #e0e0e0;
+    font-family: monospace;
+    padding:50px 70px;
+}
+.addProductHeading {
+    padding: 10px;
+}
+.addForm {
+    width: min(100%, 500px);
+}
+
+.imagePreview {
+    max-width: 500px;
+    max-height: 100%;
+}
+.spanCategory {
+    font-weight: bold;
+}
+.select {
+    background-color: white;
+    width: 60%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    padding:5px;
+    font-family: monospace;
+    margin:5px;
+    -webkit-box-sizing: content-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: content-box;    /* Firefox, other Gecko */
+    box-sizing: content-box;      
+}

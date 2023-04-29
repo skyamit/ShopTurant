@@ -6,10 +6,7 @@ import com.shopturant.ShopTurant.product.service.ProductService;
 import common.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,15 @@ public class ProductController {
 
         return new Response<>("Unable to add Product.", HttpStatusCode.valueOf(200));
     }
+
+    @PostMapping("/product/{userId}")
+    public Response<?> addProducts(@PathVariable Long userId) {
+        if(userId == null)
+            return new Response<>("Unable to add Product.", HttpStatusCode.valueOf(200));
+
+        return new Response<>(productService.getProductsByUserId(userId), HttpStatusCode.valueOf(200));
+    }
+
 
     @PostMapping("/product")
     public Response<?> getProducts() {

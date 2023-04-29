@@ -2,6 +2,7 @@ import Product from '../components/product';
 import { useEffect, useState } from 'react';
 import './Home.css';
 import Config from '../config/Config';
+import Slide from '../components/slide/Slide';
 function Home() {
     const url = Config.url;
     const [data, setData] = useState(null);
@@ -14,7 +15,9 @@ function Home() {
     },[]);
     //Different Category | Upto 20% off 
     return (
-        <div className='outerDiv'>
+        <div >
+            <Slide/>
+            <div className='outerDiv'>
             <div className="home" >
             {
             data &&
@@ -23,6 +26,7 @@ function Home() {
                 ))
             }
             </div>
+        </div>
         </div>
     );
 }

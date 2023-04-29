@@ -1,0 +1,25 @@
+.success{
+    background-color: rgb(4, 173, 4);
+}
+.info {
+    background-color: yellow;
+}
+.error {
+    background-color: red;
+}
+.message {
+    font-size:17px;
+    color:white;
+    font-family: monospace;
+}
+#right-top {
+    position:fixed;
+    top:20px;
+    width:300px;
+    right: 20px;
+    padding:10px;
+    border:solid;
+    border-width: 1px;;
+    border-radius: 10px;;
+    border-color:white;
+}
