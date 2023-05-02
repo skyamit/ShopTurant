@@ -2,6 +2,7 @@
     border:solid;
     border-width: 1px;
     border-color: #a1a1a1;
+    background: #0000000d;
     width: 300px;
     margin:10px;
 }
@@ -18,14 +19,14 @@
 }
 
 .SingleProductTitleDiv {
-    margin-top:10px;
+    margin:10px;
 }
 
 .SingleProductTitle {
     color: rgb(15, 15, 15);
-    margin:10px 20px;
-    font-size: 1.2rem;
-    font-family: monospace;
+    font-size: 16px!important;
+    line-height: 24px!important;
+    font-family: "Amazon Ember",Arial,sans-serif;
     font-weight: bolder;
 }
 .SingleProductPriceDiv {
@@ -44,4 +45,15 @@
 .SingleOProductPrice {
     display: inline-block;
     -webkit-text-stroke: #a1a1a1;
+}
+
+.SingleProductDelete {
+    position:relative;
+}
+.SingleProductDeleteImage {
+    height:30px;
+    width: 30px;
+    position: absolute;
+    right:0px;
+    top:10px;
 }

@@ -4,6 +4,7 @@ import com.shopturant.ShopTurant.product.dto.ProductDto;
 import com.shopturant.ShopTurant.product.entity.Product;
 import com.shopturant.ShopTurant.product.service.ProductService;
 import common.Response;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +53,13 @@ public class ProductController {
             return new Response<>("No Record Exists", HttpStatusCode.valueOf(200));
 
         return new Response<>(products, HttpStatusCode.valueOf(200));
+    }
+
+    @PostMapping("/productsByCategory/{categoryId}")
+    public Response<?> getProductsByCategoryId(@PathVariable Long categoryId) {
+        if(categoryId == null)
+            return new Response<>("Category Id is required", HttpStatusCode.valueOf(200));
+
+        return new Response<>(productService.getProductsByCategoryId(categoryId), HttpStatusCode.valueOf(200));
     }
 }

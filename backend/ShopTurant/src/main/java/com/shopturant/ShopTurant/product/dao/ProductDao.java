@@ -17,4 +17,7 @@ public interface ProductDao extends JpaRepository<Product, Long> {
 
     @Query(value = "select * from product where user = :userId", nativeQuery = true)
     public List<Product> getAllProductByUserId(Long userId);
+
+    @Query(value = "select p.* from product p left join product_category pc on p.id = pc.product join category c on  pc.category = c.id where c.id = :id limit 5",nativeQuery = true)
+    List<Product> getProductsByCategoryId(Long id);
 }

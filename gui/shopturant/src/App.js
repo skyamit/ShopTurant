@@ -6,19 +6,21 @@ import '@fontsource/roboto/700.css';
 import Header from './components/header/Header';
 import Home from './home/Home';
 import Footer from './components/footer/Footer';
-import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
+import { Routes,  Route} from "react-router-dom";
 import AddProduct from './myproducts/AddProduct';
 import GetProducts from './myproducts/GetProducts';
+import Search from './search/Search';
 function App() {
   return (
     <>
-    <Header/>
+      <Header/>
       <Routes>    
         <Route path="/" element={<Home />} exact />
         <Route path="/addProduct" element={<AddProduct />} exact />
         <Route path="/getProducts" element={<GetProducts />} exact />
+        <Route path="/search/:search" element={<Search />}  />
       </Routes>
-    <Footer/>
+      <Footer/>
     </>
   );
 }

@@ -7,7 +7,7 @@ function AddProduct() {
   const [imageLink, setImageLink] = useState();
   const [title, setTitle] = useState();
   const [type, setType] = useState();
-  const [categoryy, setCategoryy] = useState();
+  const [categoryy, setCategoryy] = useState("Grocery");
   const [description, setDescription] = useState();
   const [price, setPrice] = useState();
   const [discount, setDiscount] = useState();
@@ -34,7 +34,7 @@ function AddProduct() {
             "discount": discount,
             "imageId": imageLink,
             "type": type,
-            "category":["Grocery"],
+            "category":new Array(categoryy),
         }
         await fetch(url + "/product/add", {
             method: "POST",

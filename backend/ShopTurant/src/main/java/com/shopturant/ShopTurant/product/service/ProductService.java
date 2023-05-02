@@ -92,6 +92,7 @@ public class ProductService {
             dto.setSummary(product.getSummary());
             dto.setType(product.getType());
             dto.setDiscount(product.getDiscount());
+            dto.setImageId(product.getImageId());
             products.add(dto);
         }
         return products;
@@ -102,6 +103,13 @@ public class ProductService {
             return new ArrayList<>();
 
         return productDao.getAllProductByUserId(id);
+    }
+
+    public List<Product> getProductsByCategoryId(Long id) {
+        if(id == null)
+            return new ArrayList<>();
+
+        return productDao.getProductsByCategoryId(id);
     }
 }
 
