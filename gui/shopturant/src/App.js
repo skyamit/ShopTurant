@@ -10,6 +10,7 @@ import { Routes,  Route} from "react-router-dom";
 import AddProduct from './myproducts/AddProduct';
 import GetProducts from './myproducts/GetProducts';
 import Search from './search/Search';
+import SingleProductDetails from './product/SingleProductDetails';
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/addProduct" element={<AddProduct />} exact />
         <Route path="/getProducts" element={<GetProducts />} exact />
         <Route path="/search/:search" element={<Search />}  />
+        <Route path="/product/:productId" element={<SingleProductDetails />}  />
       </Routes>
       <Footer/>
     </>

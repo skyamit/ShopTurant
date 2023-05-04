@@ -12,4 +12,10 @@ import org.springframework.http.HttpStatusCode;
 public class Response<T> {
     T data;
     HttpStatusCode statusCode;
+    String msg;
+
+    public Response(T data, HttpStatusCode statusCode) {
+        this.data = data;
+        this.statusCode = statusCode;
+    }
 }

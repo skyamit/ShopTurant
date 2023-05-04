@@ -51,7 +51,7 @@ public class ProductService {
         return true;
     }
     public Product getProductById(Long id) {
-        return productDao.getReferenceById(id);
+        return productDao.getProductsById(id);
     }
     public List<ProductDto> getAllActiveProducts() {
         List<Product> list = productDao.getAllActiveProducts();

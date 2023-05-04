@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,13 @@ public class ProductController {
             return new Response<>("Product Added.", HttpStatusCode.valueOf(201));
 
         return new Response<>("Unable to add Product.", HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping("/product/{id}")
+    public Response<?> getProductById(@PathVariable Long id) {
+        if(id == null)
+            return new Response<>(new ArrayList<>(), HttpStatusCode.valueOf(200),"Unable to add Product.");
+        return new Response<>(productService.getProductById(id), HttpStatusCode.valueOf(200),"Product Found");
     }
 
     @PostMapping("/product/{userId}")
@@ -50,7 +58,7 @@ public class ProductController {
     public Response<?> getProducts(@RequestParam String search, @RequestParam Integer offset) {
         List<ProductDto> products = productService.getAllProductsBySearch(search, offset);
         if(products == null || products.size()==0)
-            return new Response<>("No Record Exists", HttpStatusCode.valueOf(200));
+            return new Response<>(new ArrayList<>(), HttpStatusCode.valueOf(200), "No Record Exists");
 
         return new Response<>(products, HttpStatusCode.valueOf(200));
     }

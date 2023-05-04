@@ -1,0 +1,39 @@
+.SingleProductDetailsDiv {
+    background-color: #ececec;
+}
+
+.noProductsFoundDiv {
+    text-align: center;
+    padding:20px;
+}
+
+.singleProductDetailsImage {
+    max-width: 100%;
+}
+.rating {
+    width:90px;
+}
+.ratingtext {
+    color:#007185;
+    font-weight: 600;
+}
+.ratingimage, .ratingtext {
+    display: inline;
+}
+.inline {
+    display: inline-block;
+}
+.cartAdd {
+    width: 20px;
+    height:20px;
+    background-color: #0a0b2f;
+    color:white;
+    border-radius: 5px;
+    padding: 2px;
+}
+.SingleProductDetailsPrice {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding:10px;
+    margin:0px;
+}

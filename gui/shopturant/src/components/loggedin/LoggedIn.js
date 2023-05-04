@@ -62,23 +62,23 @@ function LoggedIn(props) {
             <div id='userPopup' className="popup">
                 <img className='iconCloseUser pointer' src="/cancel.png" alt="close" onClick={close}/>
                 <p className='userPopupTitle'>Your History</p>
-                <h3 className="userPopupLink pointer" >Your Orders</h3>
-                <h3 className="userPopupLink pointer" >Your Wish List</h3>
+                <h4 className="userPopupLink pointer" >Your Orders</h4>
+                <h4 className="userPopupLink pointer" >Your Wish List</h4>
                 <hr/>
                 {
                     data?.data?.isSeller && (
                     <>
                         <p className='userPopupTitle'>Seller :</p>
-                        <h3 className="userPopupLink pointer" onClick={addProduct}>Add Products</h3>
-                        <h3 className="userPopupLink pointer" onClick={getProducts}>View Products</h3>
+                        <h4 className="userPopupLink pointer" onClick={addProduct}>Add Products</h4>
+                        <h4 className="userPopupLink pointer" onClick={getProducts}>View Products</h4>
                         <hr/>
                     </>
                     )
                 }
                 
                 <p className='userPopupTitle'>Account Details</p>
-                <h3 className="userPopupLink pointer" >Your Account</h3>
-                <h3 className="userPopupLink pointer" onClick={logout} >Sign Out</h3>
+                <h4 className="userPopupLink pointer" >Your Account</h4>
+                <h4 className="userPopupLink pointer" onClick={logout} >Sign Out</h4>
             </div>
         </div>
     );
