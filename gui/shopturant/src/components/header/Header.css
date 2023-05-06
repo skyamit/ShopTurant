@@ -85,3 +85,23 @@
 .userOption {
     font-size: 15px;;
 }
+.white{
+    color:white;
+}
+.cartItemCount {
+    position: absolute;
+    right: 10px;
+    background-color: #f53c3c;
+    color: white;
+    font-weight: bold;
+    border: solid;
+    border-width: 1px;
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 0.5rem;
+    display: flex;
+    min-width: 18px;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+}

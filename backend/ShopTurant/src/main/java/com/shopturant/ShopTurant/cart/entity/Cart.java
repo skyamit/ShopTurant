@@ -1,5 +1,6 @@
 package com.shopturant.ShopTurant.cart.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopturant.ShopTurant.product.entity.Product;
 import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
@@ -19,9 +20,11 @@ public class Cart {
     Long id;
     @OneToOne
     @JoinColumn(name = "user", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     User userId;
     @OneToOne
     @JoinColumn(name = "product", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     Product productId;
     @Column
     Integer count;

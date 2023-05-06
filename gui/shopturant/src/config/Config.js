@@ -7,5 +7,13 @@ export function limitString(str) {
     }
     return str;
   }
-
+  export function limitStringBySize(str, size) {
+    if (str.length > size) {
+      return str.slice(0, size) + "...";
+    }
+    return str;
+  }
+export function calculateActualPrice(cost, discount) {
+  return eval(cost - cost*discount/100).toFixed(2);
+}
 export default Config;

@@ -6,7 +6,7 @@ function Toast(props) {
     useEffect(()=>{
         setTimeout(function() {
         setShowElement(false)
-            }, 1500);
+            }, 1800);
         },
     [])
     return (

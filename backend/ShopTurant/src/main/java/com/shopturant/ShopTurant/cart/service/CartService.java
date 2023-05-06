@@ -45,17 +45,20 @@ public class CartService {
         return true;
     }
 
-    public List<CartDto> getAllCartByUserId(Long userId) {
+    public boolean checkIfAlreadyInCart(Long userId, Long productId) {
+        List<Cart> cartList = cartDao.checkIfAlreadyInCart(userId,productId);
+        if(cartList==null)
+            return false;
+        if(cartList.size() == 0)
+            return false;
+        return true;
+    }
+    public List<Cart> getAllCartByUserId(Long userId) {
         User user = userService.getUserById(userId);
         if(user == null)
             return new ArrayList<>();
         List<Cart> list = cartDao.getAllByUserId(userId);
-        List<CartDto> cartDtoList = new ArrayList<>();
-        for(Cart cart : list) {
-            CartDto cartDto = convertCartToCartDto(cart);
-            cartDtoList.add(cartDto);
-        }
-        return cartDtoList;
+        return list;
     }
     public Cart convertCartDtoToCart(CartDto cartDto, User user, Product product) {
         Cart cart = new Cart();
@@ -70,5 +73,9 @@ public class CartService {
         cartDto.setUser(cart.getUserId().getId());
         cartDto.setProduct(cart.getProductId().getId());
         return cartDto;
+    }
+
+    public Long getCartCountByUserId(Long userId) {
+        return cartDao.getCartCountByUserId(userId);
     }
 }

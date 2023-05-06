@@ -23,17 +23,42 @@
 .inline {
     display: inline-block;
 }
-.cartAdd {
-    width: 20px;
-    height:20px;
+.cartQty {
+    font-size: 1.2rem;
+    width: max-content;
     background-color: #0a0b2f;
     color:white;
-    border-radius: 5px;
-    padding: 2px;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    min-width:100px;
+    font-weight: bolder;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+.cartAdd {
+    padding-left: 12px;
+    padding-right: 12px;
+    cursor: pointer;
+}
+.cartCount {
+    font-weight: bolder;
 }
 .SingleProductDetailsPrice {
     font-size: 1.8rem;
     font-weight: 600;
     padding:10px;
     margin:0px;
+}
+.addToCart {
+    border: solid;
+    background-color: yellow;
+    border-color: whitesmoke;
+    border-width: 1px;
+    font-size: 1.2rem;
+    margin-left: 20px;
+    font-family: monospace;
+    font-weight: bolder;
 }

@@ -81,7 +81,7 @@ return (
                 <form method="POST" >
                     Email Id : <input id="email" type="email" className="inputs" onChange={(event)=>{setEmail(event.target.value)}}  placeholder="Enter you Email Id" /> <br/>
                     Password : <input id="password" type="password" className="inputs" onChange={(event)=>{setPassword(event.target.value)}} placeholder="Password" /> <br/>
-                    <button id="loginBtn" type="submit" onClick={submitLogin} className="inputs btn pointer">Login</button>
+                    <button id="loginBtn" type="submit" onClick={submitLogin} className="inputs btn btn-outline-success fw-bold pointer">Login</button>
                 </form>
             </div>
             <div id='signupPopup' className="popup">
@@ -101,7 +101,7 @@ return (
                         <option value={false}>No</option>
                         <option value={true}>Yes</option>
                     </select> <br/>
-                    <button type="submit" id="signupBtn"  className="inputs btn pointer" >SignUp</button>
+                    <button type="submit" id="signupBtn"  className="inputs btn btn-outline-success fw-bold pointer" >SignUp</button>
                 </form>
             </div>
         </div>

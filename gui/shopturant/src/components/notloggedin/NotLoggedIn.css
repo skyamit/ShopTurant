@@ -31,13 +31,6 @@
     -moz-box-sizing: content-box;    /* Firefox, other Gecko */
     box-sizing: content-box;         /* Opera/IE 8+ */
 }
-.btn {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-weight: bolder;
-    background-color: green;
-    color: white;
-}
 h1 {
     text-align: center;
     margin:0px;

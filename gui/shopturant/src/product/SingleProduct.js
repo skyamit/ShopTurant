@@ -1,5 +1,5 @@
 import './SingleProduct.css';
-import {limitString, Config} from '../config/Config';
+import {limitString,calculateActualPrice, Config} from '../config/Config';
 import { useNavigate } from 'react-router-dom';
 
 function SingleProduct(props) {
@@ -21,7 +21,7 @@ function SingleProduct(props) {
                 <span className='SingleProductTitle' >{limitString(props.data.title)}</span>
             </div>           
             <div className='SingleProductPriceDiv'>
-                <span className='SingleProductPrice'>&#x20B9;{eval(props.data.price - (props.data.price/props.data.discount)).toFixed(2)}</span>
+                <span className='SingleProductPrice'>&#x20B9;{calculateActualPrice(props.data.price,props.data.discount)}</span>
                 <span className='SingleOProductPrice'>&#x20B9;<del>{props.data.price}</del></span>
             </div>
             <div >

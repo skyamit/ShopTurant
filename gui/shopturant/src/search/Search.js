@@ -23,8 +23,8 @@ function Search() {
         .then(res => console.log(res));
     }
     useEffect(()=>{
+        setHasData(true);
         fetchSearch();
-        console.log(data);
     },[search]);
 
     return (

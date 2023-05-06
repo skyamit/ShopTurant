@@ -139,7 +139,7 @@ function AddProduct() {
               />
             </div>
             <div>
-              <button type="submit" className="inputs btn pointer">
+              <button type="submit" className="inputs btn btn-outline-primary fw-bold pointer">
                 Submit
               </button>
             </div>

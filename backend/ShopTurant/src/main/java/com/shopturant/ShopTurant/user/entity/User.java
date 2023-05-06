@@ -1,5 +1,6 @@
 package com.shopturant.ShopTurant.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class User {
     Long mobileNo;
     @Column
     String email;
+    @JsonIgnore
     @Column
     String passwordHash;
     @Column
