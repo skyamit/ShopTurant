@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./AddProduct.css";
 import Config from "../config/Config";
 import Toast from "../components/toast/Toast";
+import { IdContext } from "../App";
 
 function AddProduct() {
   const [imageLink, setImageLink] = useState();
@@ -12,9 +13,13 @@ function AddProduct() {
   const [price, setPrice] = useState();
   const [discount, setDiscount] = useState();
   const [category, setCategory] = useState([]);
-  const [userId, setUserId] = useState(0);
   const [productAdded, setProductAdded] = useState(false);
   const url = Config.url;
+  const idContext = useContext(IdContext);
+  const [message, setMessage] = useState("Unable to add product");
+  const [statusCode, setStatusCode] = useState(500);
+
+
   const categoryLoad = async () => {
     await fetch(url + "/category", {
       method: "POST",
@@ -27,7 +32,7 @@ function AddProduct() {
   const submitProduct = async (e) => {
     e.preventDefault();
         const singleProduct = {
-            "userId": userId,
+            "userId": idContext.id,
             "title": title,
             "summary": description,
             "price": price,
@@ -41,13 +46,15 @@ function AddProduct() {
             headers:{'Content-Type': 'application/json'},
             body : JSON.stringify(singleProduct)
         })
+        .then(res => res.json())
         .then((res) => {
-            (res.status === 200) && setProductAdded(true)
+          setMessage(res.data);
+          setStatusCode(res.statusCode);
+          setProductAdded(true);
         });
     };
 
   useEffect(() => {
-    setUserId(sessionStorage.getItem("userId"));
     categoryLoad();
     unsetProductAdded();
   }, [imageLink, productAdded]);
@@ -60,7 +67,7 @@ function AddProduct() {
 
   return (
     <div className="addproductOuter">
-    {productAdded && (<Toast type={'success'} message={'Product added Successfully..'} /> )}
+    {productAdded && (<Toast type={statusCode===200?'success':'error'} message={message} /> )}
       <h3 className="addProductHeading">
         Add products which you want to sell{" "}
       </h3>

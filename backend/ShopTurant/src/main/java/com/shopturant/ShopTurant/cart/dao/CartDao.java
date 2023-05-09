@@ -18,7 +18,7 @@ public interface CartDao extends JpaRepository<Cart, Long> {
     @Query(value = "select * from cart where user = :userId and product = :productId and is_active is true", nativeQuery = true)
     public List<Cart> checkIfAlreadyInCart(Long userId, Long productId);
 
-    @Query(value = "select * from cart where user = :userId and is_active is true", nativeQuery = true)
+    @Query(value = "select * from cart where user = :userId and is_active is true order by id desc", nativeQuery = true)
     public List<Cart> getAllByUserId(Long userId);
 
     @Query(value = "select count(*) from cart where user = :userId and is_active is true", nativeQuery = true)

@@ -11,10 +11,10 @@ import org.springframework.http.HttpStatusCode;
 @EqualsAndHashCode
 public class Response<T> {
     T data;
-    HttpStatusCode statusCode;
+    Integer statusCode;
     String msg;
 
-    public Response(T data, HttpStatusCode statusCode) {
+    public Response(T data, Integer statusCode) {
         this.data = data;
         this.statusCode = statusCode;
     }

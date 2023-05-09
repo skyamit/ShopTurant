@@ -1,23 +1,25 @@
 import './SingleProductDetails.css';
 import { useContext, useEffect, useState } from "react";
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {calculateActualPrice} from '../config/Config';
 import Config from '../config/Config';
 import Toast from '../components/toast/Toast';
 import { CartContext } from '../App';
+import { IdContext } from '../App';
 
 function SingleProductDetails() {
     const {productId} = useParams();
     const [data, setData] = useState();
     const [summary, setSummary] = useState([]);
     const [countItem, setCountItem] = useState(1);
-    const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
     const url = Config.url;
     const [addedToCart, setAddedToCart] = useState(false);
     const [addedToCartMessage, setAddedToCartMessage] = useState();
     const cartContext = useContext(CartContext);
-    const fetchData = ()=>{
-        fetch(url+"/product/"+productId,{
+    const idContext = useContext(IdContext);
+
+    const fetchData = async ()=>{
+        await fetch(url+"/product/"+productId,{
             method: "GET",
             })
             .then((res) => res.json())
@@ -27,10 +29,9 @@ function SingleProductDetails() {
             });
     }
     useEffect(()=>{
-        setUserId(sessionStorage.getItem("userId"));
         fetchData();
         unsetAddedToCart();
-    },[addedToCart]);
+    },[addedToCart, productId]);
 
     const unsetAddedToCart = ()=>{
         setTimeout(function() {
@@ -44,18 +45,18 @@ function SingleProductDetails() {
     }
     const decrement = ()=>{
         setCountItem((e)=>{
-            if(e==1)
+            if(e===1)
                 return 1;
             return e-1;
         });
     }
     const addToCart = async ()=>{
         const cartItem = {
-            "user" : userId,
+            "user" : idContext.id,
             "product" : productId,
             "count" : countItem
         }
-        if(userId) {
+        if(idContext.id) {
             await fetch(url+"/cart/add",{
                 method:"POST",
                 headers:{'Content-Type': 'application/json'},
@@ -66,9 +67,7 @@ function SingleProductDetails() {
                 if(res.data) {
                     setAddedToCartMessage(res.data)
                     setAddedToCart(true)
-                    console.log(cartContext.reloadCart)
                     cartContext.setReloadCart((e)=>e+1)
-                    console.log(cartContext.reloadCart)
                 } 
             })
         }
@@ -84,7 +83,7 @@ function SingleProductDetails() {
                     <div className="">
                         <div className='row'>
                             <div className="col-12 col-lg-4 col-md-12 pt-5">
-                                <img className="singleProductDetailsImage" src={data.imageId} alt="product image" />
+                                <img className="singleProductDetailsImage" src={data.imageId} alt="product" />
                             </div>
                             <div className="col-12 col-lg-8 col-md-12 p-3">
                                 <div className='SingleProductPriceDiv'>
@@ -123,6 +122,9 @@ function SingleProductDetails() {
                                 </div>
                                 <hr/>
                                 <div>
+                                    <div className='fw-bolder'>
+                                        About :
+                                    </div>
                                     <ul>
                                     {
                                         summary.map((e)=>(

@@ -1,5 +1,5 @@
 import './SingleProduct.css';
-import {limitString,calculateActualPrice, Config} from '../config/Config';
+import {limitString,calculateActualPrice} from '../config/Config';
 import { useNavigate } from 'react-router-dom';
 
 function SingleProduct(props) {
@@ -8,14 +8,13 @@ function SingleProduct(props) {
     const openProduct = ()=>{
         navigate('/product/'+props.data.id);
     };
-
     return (
         <div className='singleProduct' onClick={openProduct}>
             <div className='SingleProductDelete'>
                 <img className='SingleProductDeleteImage' src='/options.png' alt='options' />
             </div>
             <div className='singleProductImageDiv'>
-                <img className='singleProductImage' src={props.data.imageId} alt='product Image' />
+                <img className='singleProductImage' src={props.data.imageId} alt='product' />
             </div>
             <div className='SingleProductTitleDiv'>
                 <span className='SingleProductTitle' >{limitString(props.data.title)}</span>

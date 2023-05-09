@@ -3,16 +3,19 @@ import './Cart.css';
 import { CartVisibleContext } from '../components/header/Header';
 import Config from '../config/Config'; 
 import CartItem from './CartItem';
+import { CartContext } from '../App';
+import { IdContext } from '../App';
 
 const AddSelectedPriceAndProductId = createContext();
 
 function Cart() {
     const cartVisibleContext = useContext(CartVisibleContext);
+    const idContext = useContext(IdContext);
     const url  = Config.url;
-    const [userId, setUserId] = useState(0);
     const [cartItems, setCartItems] = useState();
     const [price, setPrice] = useState(0);
     const [products, setProducts] = useState([]);
+    const cartContext = useContext(CartContext);
     const addProduct = (id, price)=>{
         const index = products.indexOf(id);
         if(index <= -1){
@@ -33,18 +36,22 @@ function Cart() {
         }
     }
     useEffect(()=>{
-        setUserId(sessionStorage.getItem("userId"));
         fetchCartItems();
-    },[userId]);
+    },[idContext.id,cartContext.reloadCart]);
+
     const fetchCartItems = async ()=>{
-        userId && await fetch(url+"/cart?id="+userId,{
-            method:"POST"
-        })
-        .then(res => res.json())
-        .then(res => {
-            setCartItems(res.data)
-            console.log(res.data)
-        });
+        if(idContext.id) {
+            await fetch(url+"/cart?id="+idContext.id,{
+                method:"POST"
+            })
+            .then(res => res.json())
+            .then(res => {
+                setCartItems(res.data)
+            });
+        }
+        else{
+            setCartItems(0)
+        }
     }
     const close = ()=>{
         cartVisibleContext.setCartVisible(false)
@@ -52,7 +59,7 @@ function Cart() {
     return (
             <>
                 {
-                    userId && (
+                    idContext.id!==0 && (
                         <div className='position-fixed top-0 end-0 cartDiv'>
                             <div className='close' >
                                 <img className='iconCloseUser pointer' src="/cancel.png" alt="close" onClick={close}/>
@@ -85,6 +92,15 @@ function Cart() {
                                 </div>
                             </div>
                         </div>  
+                    )
+                }
+                {
+                    idContext.id===0 && (
+                        <div className='position-fixed top-0 end-0 cartDiv'>
+                            <div className='close' >
+                                <img className='iconCloseUser pointer' src="/cancel.png" alt="close" onClick={close}/>
+                            </div>
+                        </div>
                     )
                 }
             </>

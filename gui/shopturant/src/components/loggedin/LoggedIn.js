@@ -1,20 +1,20 @@
-import { useScrollTrigger } from '@mui/material';
 import avatar from '../../images/avatar.png';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Config from '../../config/Config';
 import './LoggedIn.css';
 import { useNavigate } from 'react-router-dom';
 import Toast from '../toast/Toast';
+import { IdContext } from '../../App';
 
 function LoggedIn(props) {
-    const [userId, setUserId] = useState(sessionStorage.getItem("userId"));
     const [data, setData] = useState();
     const url = Config.url;
     const navigate = useNavigate();
-    useEffect(()=>{
-        setUserId(sessionStorage.getItem("userId"));
+    const idContext = useContext(IdContext);
+
+    const fetchUserDetails = async ()=>{
         const variable = {
-            "id":userId
+            "id":idContext.id
         };
         fetch(url+'/userDetails',{
             method:"POST",
@@ -25,14 +25,18 @@ function LoggedIn(props) {
         .then(json => {
             if(json.data.name)
                 setData(json);
-            props.checkLogin();
             console.log(json);
         })
         .catch(error => {
             logout();
             console.log(error, 1)
         });
-    },[userId]);
+    }
+
+    useEffect(()=>{
+        fetchUserDetails();
+    },[idContext.id]);
+
     const close = ()=>{
         document.getElementById('userPopup').style.display = 'none';
     };
@@ -41,8 +45,7 @@ function LoggedIn(props) {
     };
     const logout = ()=> {
         close();
-        sessionStorage.removeItem("userId");
-        setUserId(null);
+        idContext.setId(0);
     };
     const addProduct = ()=>{
        navigate('/addProduct');

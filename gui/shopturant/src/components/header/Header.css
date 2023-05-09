@@ -10,11 +10,13 @@
 }
 .logo {
     text-align: center;
-    height:40px;
+    height:32px;
 }
 .search {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    max-width: 700px;
+    padding:0px 10px;
 }
 .searchInput{
     background-color: white;
@@ -104,4 +106,12 @@
     align-items: center;
     justify-content: center;
     top: 5px;
+}
+
+#smallScreenSearch {
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    background-color: #0a0b2f;
+    height: 65px;
 }

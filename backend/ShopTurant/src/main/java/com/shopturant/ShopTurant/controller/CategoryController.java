@@ -16,17 +16,17 @@ public class CategoryController {
     @PostMapping("/category/add")
     public Response<?> addCategory(@RequestParam String category) {
         if(category == null || category.isEmpty())
-            return new Response("Category is not valid!!", HttpStatusCode.valueOf(200));
+            return new Response("Category is not valid!!", 500);
 
         Category categoryRes = categoryService.addCategory(category);
         if(category == null)
-            return new Response<>("Category already exists.", HttpStatusCode.valueOf(200));
+            return new Response<>("Category already exists.", 500);
 
-        return new Response(categoryRes, HttpStatusCode.valueOf(201));
+        return new Response(categoryRes, 200);
     }
 
     @PostMapping("/category")
     public Response<?> getAllActiveCategory() {
-        return new Response<>(categoryService.getAllActiveCategory(), HttpStatusCode.valueOf(200));
+        return new Response<>(categoryService.getAllActiveCategory(), 200);
     }
 }

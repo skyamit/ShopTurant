@@ -2,7 +2,7 @@
     background-color: greenyellow;
     font-family: monospace;
 }
-#loginPopup, #signupPopup {
+.loginPopup, .signupPopup {
     position: fixed;
     top: 50%;
     left: 50%;
