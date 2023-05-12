@@ -11,7 +11,6 @@ function CartItem(props) {
     const url = Config.url;
     const navigate = useNavigate();
     useEffect(()=>{
-
     },[])
 
     const checkSelected = (e)=>{
@@ -37,7 +36,7 @@ function CartItem(props) {
     return (
         <div className="cartItemDiv">
             <div>
-                <input type="checkbox" onChange={checkSelected} 
+                <input type="checkbox" name="checkbox" onChange={checkSelected} 
                 cost={calculateActualPrice(props.data.productId.price, props.data.productId.discount)*props.data.count} 
                 productid={props.data.productId.id} />
             </div>

@@ -33,4 +33,19 @@ public class Orders {
     Boolean status;
     @Column
     Long cost;
+
+    @Transient
+    public boolean isValid() {
+        if(userId ==null)
+            return false;
+        if(addressId == null)
+            return false;
+        if(orderedAt == null)
+            return false;
+        if(paymentMode == null)
+            return false;
+        if(cost == null || cost<=0)
+            return false;
+        return true;
+    }
 }
