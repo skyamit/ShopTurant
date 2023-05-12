@@ -81,6 +81,7 @@ function LoggedIn(props) {
                 
                 <p className='userPopupTitle'>Account Details</p>
                 <h4 className="userPopupLink pointer" >Your Account</h4>
+                <h4 className="userPopupLink pointer" >Saved Address</h4>
                 <h4 className="userPopupLink pointer" onClick={logout} >Sign Out</h4>
             </div>
         </div>

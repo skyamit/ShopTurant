@@ -1,0 +1,8 @@
+.singleAddressDiv {
+     background-color: darkgray;
+     font-family: monospace;
+}
+.singleAddressContactDiv, .singleAddressNameDiv {
+    font-size: 1rem;
+    font-weight: bold;
+}

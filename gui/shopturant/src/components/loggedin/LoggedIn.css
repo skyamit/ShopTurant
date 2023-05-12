@@ -19,6 +19,7 @@
 }
 .userPopupTitle {
     color:black;
+    font-size: 1.2rem;
 }
 .userPopupLink,.userPopupTitle {
     padding:5px;
@@ -27,6 +28,6 @@
 }
 .userPopupLink{
     color:blue;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
