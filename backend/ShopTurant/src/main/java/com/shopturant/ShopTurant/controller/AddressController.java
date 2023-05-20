@@ -6,12 +6,10 @@ import com.shopturant.ShopTurant.address.service.AddressService;
 import com.shopturant.ShopTurant.user.entity.User;
 import com.shopturant.ShopTurant.user.service.UserService;
 import common.Response;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AddressController {
@@ -62,5 +60,13 @@ public class AddressController {
         if(user == null)
             return new Response<>("Invalid user!", 500);
         return new Response<>(addressService.getAddressByUserId(userId), 200);
+    }
+
+    @PostMapping("/address/{id}")
+    public Response<Address> getAddressById(@PathVariable Long id) {
+        if(id == null)
+            return new Response<>(null, 500);
+        Address address = addressService.getAddressById(id);
+        return new Response<>(address, 200);
     }
 }

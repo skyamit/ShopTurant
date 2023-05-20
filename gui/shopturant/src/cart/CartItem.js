@@ -16,7 +16,6 @@ function CartItem(props) {
     const checkSelected = (e)=>{
         var price = parseInt(e.target.getAttribute("cost"),10);
         var productId = parseInt(e.target.getAttribute("productid"),10);
-        console.log(price, productId);
         if(e.target.checked)
             addAndRemoveProduct.addProduct(productId, price);
         else
@@ -38,7 +37,7 @@ function CartItem(props) {
             <div>
                 <input type="checkbox" name="checkbox" onChange={checkSelected} 
                 cost={calculateActualPrice(props.data.productId.price, props.data.productId.discount)*props.data.count} 
-                productid={props.data.productId.id} />
+                productid={props.data.id} />
             </div>
             <div className="CartItemDetails">
                 <div className="d-flex">
@@ -60,9 +59,6 @@ function CartItem(props) {
                             </div> 
                         </div>
                     </div>
-                </div>
-                <div>
-                    Delivery excepted by Sun May 15
                 </div>
             </div>
             <div>

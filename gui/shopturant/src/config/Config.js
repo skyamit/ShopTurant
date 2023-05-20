@@ -1,5 +1,6 @@
 var Config = {
-    "url" : "http://localhost:8080"
+    "url" : "http://localhost:8080",
+    "stripeUrl":"https://api.stripe.com"
 }
 export function limitString(str) {
     if (str.length > 100) {

@@ -49,7 +49,7 @@ public class AddressService {
     }
     public AddressDto convertAddressToAddressDto(Address address) {
         AddressDto addressDto = new AddressDto();
-        addressDto.setId(addressDto.getId());
+        addressDto.setId(address.getId());
         addressDto.setCity(address.getCity());
         addressDto.setCountry(address.getCountry());
         addressDto.setEmail(address.getEmail());

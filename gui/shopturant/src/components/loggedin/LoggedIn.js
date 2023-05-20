@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react';
 import Config from '../../config/Config';
 import './LoggedIn.css';
 import { useNavigate } from 'react-router-dom';
-import Toast from '../toast/Toast';
 import { IdContext } from '../../App';
 
 function LoggedIn(props) {
@@ -54,7 +53,11 @@ function LoggedIn(props) {
    const getProducts = ()=>{
     navigate('/getProducts');
     close();
-};
+    };
+    const showMyOrders = ()=>{
+        navigate("/order");
+        close();
+    }
     return (
         <div className='myProfile pl-2' >
             <img src={avatar} className="profileImage  pl-2" alt="cart" />
@@ -65,7 +68,7 @@ function LoggedIn(props) {
             <div id='userPopup' className="popup">
                 <img className='iconCloseUser pointer' src="/cancel.png" alt="close" onClick={close}/>
                 <p className='userPopupTitle'>Your History</p>
-                <h4 className="userPopupLink pointer" >Your Orders</h4>
+                <h4 className="userPopupLink pointer" onClick={showMyOrders}>Your Orders</h4>
                 <h4 className="userPopupLink pointer" >Your Wish List</h4>
                 <hr/>
                 {

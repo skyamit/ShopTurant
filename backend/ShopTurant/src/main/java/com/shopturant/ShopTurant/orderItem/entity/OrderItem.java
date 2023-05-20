@@ -11,16 +11,20 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
+@Entity
+@Table(name = "orderItem")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @OneToMany
-    @JoinColumn(name = "order", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "orders", referencedColumnName = "id")
     Orders orderId;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "product", referencedColumnName = "id")
     Product productId;
     @Column
-    Long count;
+    Integer count;
+    @Column
+    Long price;
 }

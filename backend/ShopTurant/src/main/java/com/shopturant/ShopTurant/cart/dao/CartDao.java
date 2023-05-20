@@ -23,4 +23,12 @@ public interface CartDao extends JpaRepository<Cart, Long> {
 
     @Query(value = "select count(*) from cart where user = :userId and is_active is true", nativeQuery = true)
     Long getCartCountByUserId(Long userId);
+
+    @Query(value = "select * from cart where id in (:ids) order by id desc", nativeQuery = true)
+    public List<Cart> getAllCartByIds(List<Long> ids);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update cart set is_active = false where id in (:ids) ", nativeQuery = true)
+    void removeByCartIds(List<Long> ids);
 }
