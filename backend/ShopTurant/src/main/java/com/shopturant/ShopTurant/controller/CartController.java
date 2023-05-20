@@ -51,4 +51,12 @@ public class CartController {
         Long count = cartService.getCartCountByUserId(userId);
         return new Response<>(count, 200);
     }
+
+    @PostMapping("/cartbyids")
+    public Response<?> getCartByIds(@RequestParam List<Long> ids) {
+        if(ids == null || ids.size()==0)
+            return new Response<>(new ArrayList<>(), 500, "Invalid Input");
+
+        return new Response<>(cartService.getAllCartByIds(ids), 200);
+    }
 }

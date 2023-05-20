@@ -45,6 +45,11 @@ public class CartService {
         return true;
     }
 
+    public boolean removeByCartIds(List<Long> ids) {
+        cartDao.removeByCartIds(ids);
+        return true;
+    }
+
     public boolean checkIfAlreadyInCart(Long userId, Long productId) {
         List<Cart> cartList = cartDao.checkIfAlreadyInCart(userId,productId);
         if(cartList==null)
@@ -77,5 +82,9 @@ public class CartService {
 
     public Long getCartCountByUserId(Long userId) {
         return cartDao.getCartCountByUserId(userId);
+    }
+
+    public List<Cart> getAllCartByIds(List<Long> ids) {
+        return cartDao.getAllCartByIds(ids);
     }
 }

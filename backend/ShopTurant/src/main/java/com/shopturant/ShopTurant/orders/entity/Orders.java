@@ -1,5 +1,6 @@
 package com.shopturant.ShopTurant.orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.shopturant.ShopTurant.address.entity.Address;
 import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
@@ -21,9 +22,11 @@ public class Orders {
     Long id;
     @OneToOne
     @JoinColumn(name = "user", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     User userId;
     @OneToOne
     @JoinColumn(name = "address", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     Address addressId;
     @Column
     Time orderedAt;
