@@ -6,7 +6,9 @@ import com.shopturant.ShopTurant.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class Orders {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     Address addressId;
     @Column
-    Time orderedAt;
+    LocalTime orderedAt;
     @Column
     String paymentMode;
     @Column

@@ -6,6 +6,7 @@ import com.shopturant.ShopTurant.cart.entity.Cart;
 import com.shopturant.ShopTurant.cart.service.CartService;
 import com.shopturant.ShopTurant.orderItem.entity.OrderItem;
 import com.shopturant.ShopTurant.orderItem.service.OrderItemService;
+import com.shopturant.ShopTurant.orders.dto.OrdersDto;
 import com.shopturant.ShopTurant.orders.entity.Orders;
 import com.shopturant.ShopTurant.orders.service.OrdersService;
 import com.shopturant.ShopTurant.product.service.ProductService;
@@ -24,8 +25,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 public class OrderController {
@@ -59,7 +64,20 @@ public class OrderController {
             return new Response<>("Invalid User id", 500);
 
         List<Orders> list = ordersService.getOrdersByUserId(userId);
-        return new Response<>(list, 200);
+        List<Long> orderIds = list.stream().map(Orders::getId).toList();
+        List<OrderItem> orderItems = orderItemService.getAllByOrderIds(orderIds);
+        Map<Long, List<OrderItem>> map = new HashMap<>();
+        for(OrderItem orderItem : orderItems) {
+            List<OrderItem> l = map.getOrDefault(orderItem.getId(), new ArrayList<>());
+            l.add(orderItem);
+            map.put(orderItem.getId(), l);
+        }
+        List<OrdersDto> ordersDtos = new ArrayList<>();
+        for(Orders l : list) {
+            OrdersDto ordersDto = new OrdersDto(l, map.getOrDefault(l.getId(), new ArrayList<>()));
+            ordersDtos.add(ordersDto);
+        }
+        return new Response<>(ordersDtos, 200);
     }
 
     @PostMapping("/payments")
@@ -101,9 +119,7 @@ public class OrderController {
                     .build();
 
         Orders orders = new Orders();
-        long now = System.currentTimeMillis();
-        Time sqlTime = new Time(now);
-        orders.setOrderedAt(sqlTime);
+        orders.setOrderedAt(LocalTime.now());
         orders.setAddressId(address);
         orders.setCost(cost.longValue());
         orders.setUserId(user);

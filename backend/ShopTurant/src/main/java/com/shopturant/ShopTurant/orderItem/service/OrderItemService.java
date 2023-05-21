@@ -17,4 +17,8 @@ public class OrderItemService {
     public List<OrderItem> saveAll(List<OrderItem> items) {
         return orderItemDao.saveAll(items);
     }
+
+    public List<OrderItem> getAllByOrderIds(List<Long> orderIds) {
+        return orderItemDao.getAllByOrderIds(orderIds);
+    }
 }
