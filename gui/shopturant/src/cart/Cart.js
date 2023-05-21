@@ -61,7 +61,7 @@ function Cart() {
             console.log(data)
             setSecretKey(data.msg); 
         });
-
+        cartContext.setReloadCart((e)=>e+1)
     }
     const fetchOrderDetails = async ()=>{
         // 1. fetch by products based on user id and keep count

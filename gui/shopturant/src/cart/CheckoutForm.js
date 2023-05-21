@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
+import Toast from '../components/toast/Toast';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [showPayment, setShowPayment] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,9 +27,15 @@ const CheckoutForm = () => {
     if (error) {
       setErrorMessage(error.message);
     } else {
+      setSuccess(true)
+      reset()
     }
   };
-
+  const reset = ()=>{
+    setTimeout(()=>{
+      setSuccess(false);
+    }, 1500);
+  }
   const close = ()=>{
     setShowPayment(false);
   }
@@ -48,6 +56,8 @@ const CheckoutForm = () => {
         </div>
             )
         }
+        {success && <Toast type="success" message="Payment Successfull." /> }
+        {errorMessage && <Toast type="error" message="Payment Declined." />}
     </div>
   )
 };
