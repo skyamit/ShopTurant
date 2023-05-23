@@ -13,6 +13,7 @@ import Search from './search/Search';
 import SingleProductDetails from './product/SingleProductDetails';
 import { createContext, useState } from 'react';
 import Order from './orders/Order';
+import EditAddress from './components/address/EditAddress';
 const CartContext = createContext();
 const IdContext = createContext();
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/search/:search" element={<Search />}  />
             <Route path="/product/:productId" element={<SingleProductDetails />}  />
             <Route path="/order" element={<Order />}  />
+            <Route path="/address" element={<EditAddress />}  />
           </Routes>
         <Footer/>
       </IdContext.Provider>

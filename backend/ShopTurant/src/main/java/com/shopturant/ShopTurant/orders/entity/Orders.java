@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @NoArgsConstructor
@@ -31,11 +32,11 @@ public class Orders {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     Address addressId;
     @Column
-    LocalTime orderedAt;
+    LocalDateTime orderedAt;
     @Column
     String paymentMode;
     @Column
-    Boolean status;
+    Integer status;
     @Column
     Long cost;
 

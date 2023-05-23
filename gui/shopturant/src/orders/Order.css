@@ -2,3 +2,15 @@
     border-color: rgb(171 171 171 / 98%);
     background-color: rgb(233 233 233 / 65%);
 }
+.orderItemImageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:40px;
+    height: 40px;
+    padding: 5px;
+    overflow:hidden;
+}
+.orderDiv {
+    width: max(60%, 500px);
+}

@@ -58,6 +58,10 @@ function LoggedIn(props) {
         navigate("/order");
         close();
     }
+    const editAddress = ()=>{
+        navigate("/address");
+        close();
+    }
     return (
         <div className='myProfile pl-2' >
             <img src={avatar} className="profileImage  pl-2" alt="cart" />
@@ -84,7 +88,7 @@ function LoggedIn(props) {
                 
                 <p className='userPopupTitle'>Account Details</p>
                 <h4 className="userPopupLink pointer" >Your Account</h4>
-                <h4 className="userPopupLink pointer" >Saved Address</h4>
+                <h4 className="userPopupLink pointer"onClick={editAddress} >Saved Address</h4>
                 <h4 className="userPopupLink pointer" onClick={logout} >Sign Out</h4>
             </div>
         </div>

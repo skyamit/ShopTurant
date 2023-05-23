@@ -21,7 +21,6 @@ public class OrderItem {
     @OneToOne
     @JoinColumn(name = "orders", referencedColumnName = "id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @Transient
     Orders orderId;
     @OneToOne
     @JoinColumn(name = "product", referencedColumnName = "id")
