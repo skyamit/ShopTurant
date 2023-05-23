@@ -17,6 +17,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.model.Product;
 import com.stripe.param.PaymentIntentCreateParams;
+import common.Constants;
 import common.OrderData;
 import common.Response;
 import org.aspectj.weaver.ast.Or;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +60,17 @@ public class OrderController {
         return new Response<>("Request Submitted..", 200);
     }
 
+    @PostMapping("/order/cancel")
+    public Response<?> cancelOrder(@RequestParam Long orderId) {
+        if(orderId == null)
+            return new Response<>("Invalid Request..", 500);
+
+        boolean status = ordersService.cancelOrder(orderId);
+        if(status)
+            return new Response<>("Order Cancelled.", 200);
+        return new Response<>("Error occurred..", 500);
+    }
+
     @PostMapping("/orders")
     public Response<?> getOrdersByUserId(@RequestParam Long userId) {
         if(userId==null)
@@ -68,9 +81,10 @@ public class OrderController {
         List<OrderItem> orderItems = orderItemService.getAllByOrderIds(orderIds);
         Map<Long, List<OrderItem>> map = new HashMap<>();
         for(OrderItem orderItem : orderItems) {
-            List<OrderItem> l = map.getOrDefault(orderItem.getId(), new ArrayList<>());
+            List<OrderItem> l = map.getOrDefault(orderItem.getOrderId().getId(), new ArrayList<>());
             l.add(orderItem);
-            map.put(orderItem.getId(), l);
+            map.put(orderItem.getOrderId().getId(), l);
+            orderItem.setOrderId(null);
         }
         List<OrdersDto> ordersDtos = new ArrayList<>();
         for(Orders l : list) {
@@ -119,11 +133,11 @@ public class OrderController {
                     .build();
 
         Orders orders = new Orders();
-        orders.setOrderedAt(LocalTime.now());
+        orders.setOrderedAt(LocalDateTime.now());
         orders.setAddressId(address);
         orders.setCost(cost.longValue());
         orders.setUserId(user);
-        orders.setStatus(true);
+        orders.setStatus(Constants.ORDER_STATUS_ORDERED);
         orders.setPaymentMode("Online");
         orders = ordersService.save(orders);
 
@@ -131,12 +145,12 @@ public class OrderController {
         for(Cart c : carts) {
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(orders);
-            orderItem.setPrice(c.getProductId().getPrice());
+            orderItem.setPrice(c.getProductId().getPrice() - c.getProductId().getPrice()*c.getProductId().getDiscount()/100);
             orderItem.setCount(c.getCount());
             orderItem.setProductId(c.getProductId());
             orderItems.add(orderItem);
         }
-        orderItemService.saveAll(orderItems);
+        orderItems = orderItemService.saveAll(orderItems);
 
         cartService.removeByCartIds(orderData.getCartIds());
 

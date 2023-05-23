@@ -1,4 +1,3 @@
-import Grid from '@mui/material/Grid';
 import './Header.css';
 import logo from '../../images/ShopTurant.png';
 import cart from '../../images/carts.png';
@@ -6,7 +5,6 @@ import NotLoggedIn from '../notloggedin/NotLoggedIn';
 import LoggedIn from '../loggedin/LoggedIn';
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Toast from '../toast/Toast';
 import { useContext } from 'react';
 import Config from '../../config/Config';
 import { CartContext, IdContext } from '../../App';
@@ -33,6 +31,8 @@ function Header() {
         navigate('/');
     }
     const search = ()=>{
+        if(searchText.length === 0)
+            return;
         navigate('/search/'+searchText);
     };
 
