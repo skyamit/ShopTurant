@@ -4,9 +4,23 @@
      border: solid;
      border-width: 1px;
      border-radius: 10px;
-     border-color: #e2e2e2;
+     border-color: #e2e2e2;    
+     width: -webkit-fill-available
 }
 .singleAddressContactDiv, .singleAddressNameDiv {
     font-size: 1rem;
     font-weight: bold;
+}
+.addressDiv {
+    width: 100%;
+}
+.editDiv {
+    width: max(60%, 500px);
+}
+.editButton {
+    width: min-content;
+}
+.editPosition {
+    right: 10px;
+    top: 10px;
 }
