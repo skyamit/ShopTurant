@@ -1,6 +1,7 @@
 var Config = {
     "url" : "http://localhost:8080",
-    "stripeUrl":"https://api.stripe.com"
+    "stripeUrl":"https://api.stripe.com",
+    "deleteAddress" :"/address/delete?id="
 }
 export function limitString(str) {
     if (str.length > 100) {

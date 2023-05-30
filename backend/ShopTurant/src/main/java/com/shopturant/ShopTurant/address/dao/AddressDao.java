@@ -19,5 +19,5 @@ public interface AddressDao extends JpaRepository<Address, Long> {
     @Modifying
     @Transactional
     @Query(value = "update address set is_active = false where id = :id ", nativeQuery = true)
-    public Address removeAddressById(Long id);
+    public void removeAddressById(Long id);
 }

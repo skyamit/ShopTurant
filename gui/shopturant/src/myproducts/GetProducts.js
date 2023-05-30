@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Config from "../config/Config";
-import SingleProduct from "../product/SingleProduct";
 import './GetProducts.css';
 import { IdContext } from "../App";
+import SingleProductOwner from "../product/SingleProductOwner";
 
 function GetProducts() {
     
@@ -26,7 +26,7 @@ function GetProducts() {
         <div className="getProducts">
             {
                 products && products.map((e)=>{
-                    return (<SingleProduct key={e.id} data={e}/>);
+                    return (<SingleProductOwner key={e.id} data={e}/>);
                 })
             }
         </div>

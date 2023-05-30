@@ -23,7 +23,6 @@ function Header() {
     
     useEffect(()=>{
         countCartItem();
-        disable();
         reload();
     },[cartContext.reloadCart, idContext.id]);
 
@@ -56,7 +55,7 @@ function Header() {
         setCartVisible(true)
     }
 
-    const disable = ()=>{
+    const reload = ()=>{
         if(window.innerWidth < 800) {
             document.getElementById("largeScreenSearch").hidden = true;
             document.getElementById("smallScreenSearch").hidden = false;
@@ -65,9 +64,6 @@ function Header() {
             document.getElementById("largeScreenSearch").hidden = false;
             document.getElementById("smallScreenSearch").hidden = true;
         }
-    }
-    const reload = ()=>{
-
         window.addEventListener("resize", (event) => {
             if(event.currentTarget.innerWidth < 800) {
                 document.getElementById("largeScreenSearch").hidden = true;
