@@ -111,5 +111,9 @@ public class ProductService {
 
         return productDao.getProductsByCategoryId(id);
     }
+
+    public Product saveOrUpdate(Product product) {
+        return productDao.save(product);
+    }
 }
 

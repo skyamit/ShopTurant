@@ -9,11 +9,8 @@ function SingleProduct(props) {
         navigate('/product/'+props.data.id);
     };
     return (
-        <div className='singleProduct' onClick={openProduct}>
-            <div className='SingleProductDelete'>
-                <img className='SingleProductDeleteImage' src='/options.png' alt='options' />
-            </div>
-            <div className='singleProductImageDiv'>
+        <div className='singleProduct'>
+            <div className='singleProductImageDiv pointer'  onClick={openProduct}>
                 <img className='singleProductImage' src={props.data.imageId} alt='product' />
             </div>
             <div className='SingleProductTitleDiv'>
@@ -23,7 +20,7 @@ function SingleProduct(props) {
                 <span className='SingleProductPrice'>&#x20B9;{calculateActualPrice(props.data.price,props.data.discount)}</span>
                 <span className='SingleOProductPrice'>&#x20B9;<del>{props.data.price}</del></span>
             </div>
-            <div >
+            <div className='d-flex justify-content-around'>
             </div>
         </div>
     );

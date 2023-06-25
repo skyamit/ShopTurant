@@ -13,3 +13,18 @@
     font-size: 0.8rem;
     font-family: monospace;
 }
+.monospace {
+    font-family: monospace;
+}
+.footer-links {
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 400;
+    color: #dedede;
+}
+.footer-address {
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: 400;
+    color: #dedede;
+}

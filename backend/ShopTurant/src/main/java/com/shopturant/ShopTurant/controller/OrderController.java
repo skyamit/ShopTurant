@@ -152,8 +152,6 @@ public class OrderController {
         }
         orderItems = orderItemService.saveAll(orderItems);
 
-        cartService.removeByCartIds(orderData.getCartIds());
-
         PaymentIntent paymentIntent = PaymentIntent.create(params);
         System.out.println(paymentIntent.getClientSecret());
         return new Response<>("Payment Proccessed", 200, paymentIntent.getClientSecret());

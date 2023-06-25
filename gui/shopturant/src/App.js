@@ -25,6 +25,7 @@ function App() {
     <CartContext.Provider value={{reloadCart,setReloadCart}}>
       <IdContext.Provider value={{id, setId}} >
         <Header/>
+        <div className='body'>
           <Routes>    
             <Route path="/" element={<Home />} exact />
             <Route path="/addProduct" element={<AddProduct />} exact />
@@ -34,6 +35,7 @@ function App() {
             <Route path="/order" element={<Order />}  />
             <Route path="/address" element={<EditAddress />}  />
           </Routes>
+        </div>
         <Footer/>
       </IdContext.Provider>
     </CartContext.Provider>

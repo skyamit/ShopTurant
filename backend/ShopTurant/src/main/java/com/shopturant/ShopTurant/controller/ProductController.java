@@ -30,6 +30,21 @@ public class ProductController {
         return new Response<>("Unable to add Product.", 500);
     }
 
+    @DeleteMapping("/product/{id}")
+    public Response<?> deleteProduct(@PathVariable Long id) {
+        if(id == null)
+            return new Response<>("Invalid Product Id!!", 500);
+
+        Product product = productService.getProductById(id);
+        if(product == null)
+            return new Response<>("Invalid Product Id!!", 500);
+
+        product.setIsActive(false);
+        product = productService.saveOrUpdate(product);
+
+        return new Response<>("Product removed!!", 200);
+    }
+
     @GetMapping("/product/{id}")
     public Response<?> getProductById(@PathVariable Long id) {
         if(id == null)

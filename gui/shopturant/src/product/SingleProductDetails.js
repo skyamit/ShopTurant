@@ -103,17 +103,19 @@ function SingleProductDetails() {
                                 <div className='d-flex'>
                                     <div className='cartQty'>
                                         <div onClick={decrement} className='inline cartAdd'>
-                                            -
+                                            <i className="fa-solid fa-minus fa-sm white"></i>
                                         </div>
                                         <div  className='inline cartCount'>
                                             {countItem}
                                         </div>
                                         <div onClick={increment} className='inline cartAdd'>
-                                            +
+                                            <i className="fa-solid fa-plus fa-sm white" ></i>
                                         </div>
                                     </div>
                                     <div className=''>
-                                        <button onClick={addToCart} className='addToCart'>Add to Cart</button>
+                                        <button onClick={addToCart} className='addToCart '>
+                                            <i className="fa-solid fa-cart-plus fa-lg"></i> ADD TO CART
+                                        </button>
                                     </div>
                                 </div>
                                 <hr/>

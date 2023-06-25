@@ -1,10 +1,6 @@
 .singleAddressDiv {
      background-color: rgb(230 223 247);
-     font-family: monospace;
-     border: solid;
-     border-width: 1px;
-     border-radius: 10px;
-     border-color: #e2e2e2;    
+     font-family: monospace;  
      width: -webkit-fill-available
 }
 .singleAddressContactDiv, .singleAddressNameDiv {
@@ -23,4 +19,7 @@
 .editPosition {
     right: 10px;
     top: 10px;
+}
+.editAddAddress {
+    background-color: #e9e5ff;
 }

@@ -46,7 +46,7 @@ public class AddressController {
         return new Response<>("Address added successfully!", 200);
     }
 
-    @PostMapping("/address/remove")
+    @PostMapping("/address/delete")
     public Response<?> removeAddress(@RequestParam Long id) {
         boolean status = addressService.removeAddressById(id);
         if(!status)
