@@ -81,12 +81,14 @@ function Header() {
         <div>
             <div className=''>
                 <div className='header d-flex align-center justify-content-between'>
-                    <div className='logo'>
+                    <div className=''>
                         <img src={logo} className="logo  pl-2 pointer" onClick={home} alt="logo" />
                     </div>
                     <div id="largeScreenSearch" className='search flex-grow-1 '>
                         <input type='text' className='searchInput' onChange={(e) => {setSearchText(e.target.value)}} placeholder='Search ShopTurant'/>
-                        <button className='searchButton' onClick={search} type='submit'>Search</button>
+                        <button className='searchButton' onClick={search} type='submit'>
+                            <i className="fa-solid fa-magnifying-glass fa-sm color-main" ></i> SEARCH
+                        </button>
                     </div>
                     <div className='details d-flex align-center '>
                         { idContext.id!==0 && (<LoggedIn key={0} />) }
@@ -103,7 +105,9 @@ function Header() {
                 <div id="smallScreenSearch">
                     <div className='search flex-grow-1'>
                         <input type='text' className='searchInput' onChange={(e) => {setSearchText(e.target.value)}} placeholder='Search ShopTurant'/>
-                        <button className='searchButton' onClick={search} type='submit'>Search</button>
+                        <button className='searchButton' onClick={search} type='submit'>
+                            <i className="fa-solid fa-magnifying-glass fa-sm color-main" ></i> SEARCH
+                        </button>
                     </div>
                 </div>
             </div>

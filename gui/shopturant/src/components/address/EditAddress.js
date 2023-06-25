@@ -123,7 +123,9 @@ function EditAddress(props) {
                             <div  className='singleAddressContactDiv'>Mobile No. : +91 {e.mobileNo}<br></br> Email-Id : {e.email}</div>
                         </div>
                         <div className="d-flex justify-content-center flex-column position-absolute editPosition p-1">
-                            <button className="btn btn-danger m-2 editButton fw-bold" addressid={e.id} onClick={deleteAddress}><img src="./trash.svg"/></button>
+                            <button className="btn btn-danger m-2 editButton fw-bold" addressid={e.id} onClick={deleteAddress}>
+                                <i className="fa-solid fa-trash-can fa-sm white" ></i>    
+                            </button>
                         </div>
                     </div>       
                 ))

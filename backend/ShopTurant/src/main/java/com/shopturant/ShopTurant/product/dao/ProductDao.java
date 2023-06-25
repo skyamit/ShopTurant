@@ -11,7 +11,7 @@ public interface ProductDao extends JpaRepository<Product, Long> {
     @Query(value = "select * from product where is_active = true order by id desc", nativeQuery = true)
     public List<Product> getAllActiveProducts();
 
-    @Query(value = "select p.* from product p left join product_category pc on p.id = pc.product left join category c on  pc.category = c.id where p.title like %:search% or c.title like %:search% and is_active is true limit 10 offset :offset",
+    @Query(value = "select p.* from product p left join product_category pc on p.id = pc.product left join category c on  pc.category = c.id where p.title like %:search% or c.title like %:search% and p.is_active is true limit 10 offset :offset",
     nativeQuery = true)
     public List<Product> getAllProductsBySearch(String search, Integer offset);
 

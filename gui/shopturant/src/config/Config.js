@@ -4,8 +4,8 @@ var Config = {
     "deleteAddress" :"/address/delete?id="
 }
 export function limitString(str) {
-    if (str.length > 100) {
-      return str.slice(0, 100) + "...";
+    if (str.length > 60) {
+      return str.slice(0, 60) + "...";
     }
     return str;
   }

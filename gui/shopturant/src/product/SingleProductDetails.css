@@ -54,11 +54,16 @@
 }
 .addToCart {
     border: solid;
-    background-color: yellow;
-    border-color: whitesmoke;
+    background-color: #FFD43B;
+    border-color: #0a0b2f;
     border-width: 1px;
+    border-radius: 5px;;
     font-size: 1.2rem;
     margin-left: 20px;
     font-family: monospace;
     font-weight: bolder;
+}
+
+.w-50 {
+    width:50%;
 }

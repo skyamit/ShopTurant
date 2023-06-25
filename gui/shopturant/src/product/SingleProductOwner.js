@@ -39,9 +39,13 @@ function SingleProductOwner(props) {
                     <span className='SingleProductPrice'>&#x20B9;{calculateActualPrice(props.data.price,props.data.discount)}</span>
                     <span className='SingleOProductPrice'>&#x20B9;<del>{props.data.price}</del></span>
                 </div>
-                <div className='d-flex justify-content-around'>
-                    <btn className="btn btn-danger m-2 ps-5 pe-5" onClick={deleteProduct} >Delete</btn>
-                    <btn type="button" className="btn btn-warning m-2 ps-5 pe-5 disabled" disabled>Edit</btn>
+                <div className='d-flex'>
+                    <btn className="btn btn-danger m-2 w-50" onClick={deleteProduct} >
+                        <i className="fa-solid fa-trash-can fa-sm white" ></i> DELETE
+                    </btn>
+                    <btn className="btn btn-secondary m-2 w-50">
+                        <i className="fa-solid fa-pen-to-square fa-sm white" ></i> EDIT
+                    </btn>
                 </div>
             </div>
             )
